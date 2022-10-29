@@ -8,7 +8,6 @@
 // O2 /
 // i and j long
 
-
 public class lab1 {
     public static void main(String[] args) {
     long a = 4;
@@ -17,23 +16,26 @@ public class lab1 {
     int n = 9;
     int m = 11;
 
-
     if (a > n || b > m) {
-        System.out.println("Equation error");
+        System.out.println("Equation error. Lower bound is bigger than higher bound");
+        return;
+    }
+    // i - c != 0
+    if (a <= c && n >= c) {
+        System.out.println("Cannot divide by 0");
         return;
     }
 
     double result = 0;
-
+    double upper;
+    double lower;
     for (long i = a; i <= n; i++) {
+        lower = (i - c);
         for (long j = b; j <= m; j++) {
-            if ((i - c) == 0) {
-                throw new IllegalStateException("Cant divide by 0");}
-            result += ((i / j) / (i - c));
+            upper = (i / j);
+            result += upper / lower;
         }
-
     }
-
-        System.out.println(result);
+    System.out.println(result);
     }
 }
